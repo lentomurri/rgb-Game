@@ -1,0 +1,94 @@
+//set the match on
+var gameover = false;
+var easyGame = false;
+//create replay
+var replay = document.querySelector("#replay");
+var playAgain = function() {
+  location.reload();
+}
+
+//three rgb values in the h1 and to the right square
+var squares = document.querySelectorAll(".square")
+var result = document.querySelector("#result");
+
+
+var squareSolution = function() {
+  var which = 5;
+  if (easyGame) {
+    which = 3;
+  }
+  //randomly fish between squares
+  return "#" + squares[Math.floor(Math.random() * (which - 1) + 1)].id;
+}
+//assigns the RGB to one colour
+
+var square = document.querySelector(squareSolution());
+
+
+//function to create the RGB value
+var rgb = function() {
+  //create min and max and fish a random number between that
+  return Math.floor(Math.random() * 256);
+}
+
+//assigns the solution and assigns the rgb to a square
+function assign() {
+  red.textContent = rgb();
+  blue.textContent = rgb();
+  green.textContent = rgb();
+  square.style.backgroundColor = document.querySelector("#pick").textContent;
+}
+
+squareSolution();
+assign();
+
+var easyMode = function() {
+  for(var i = 3; i <=5; i++) {
+    squares[i].style.display = "none";
+  }
+    squareSolution();
+    rgb();
+    assign();
+    randomColours();
+  }
+
+
+//play again button
+replay.addEventListener("click", playAgain);
+//press hard to reload page
+var hard = document.querySelector("#hard");
+hard.addEventListener("click", playAgain);
+
+var easy = document.querySelector("#easy");
+easy.addEventListener("click", function() {
+  hard.classList.remove("turnedOn");
+  this.classList.add("turnedOn");
+  easyMode = true;
+  easyMode();
+});
+
+//function to make them disappear if answer is wrong or cheers if right
+var compare = function() {
+  //check if RGB is the same as the solution
+  if (gameover == false && this.style.backgroundColor === square.style.backgroundColor) {
+    result.textContent = "YOU WIN!"
+    gameover = true;
+  }
+  else if (gameover == false) {
+    this.style.visibility = "hidden";
+    result.textContent = "Try Again!"
+  }
+}
+
+//select squares and assign random colours
+function randomColours() {
+  for(var i = 0; i < squares.length; i++) {
+    //compares to ID, if ID is different it assigns different colour
+  if (squares[i].id !== square.id) {
+    squares[i].style.backgroundColor = "rgb(" + rgb() + ", " + rgb() + ", " + rgb() + ")";
+  }
+  squares[i].addEventListener("click", compare)
+}
+
+}
+randomColours();

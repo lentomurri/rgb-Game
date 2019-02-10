@@ -1,0 +1,99 @@
+body {
+  background-color: #232323;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+#pick {
+  font-size: 4em;
+}
+
+.fading {
+  display: none;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  margin: 0;
+}
+
+h1 span {
+  color: yellow;
+  font-size: 2em;
+}
+
+.turnedOn {
+  background-color: #425cf4 !important;
+  color: white !important;
+}
+
+.container {
+  max-width: 50%;
+  margin: 1% auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.line {
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+  margin:0 auto;
+}
+
+#replay {
+  flex-basis: 30%;
+}
+
+.line button {
+  display: inline-block;
+  flex-basis: 10%;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: center;
+  font-weight: 900;
+  font-size: 1.5em;
+  color:#425cf4;
+  background-color: white;
+  border: none;
+  text-transform: uppercase;
+  -webkit-transition: all 0.3s; /* Safari */
+  transition: background-color 0.7s;
+  transition: color 0.4s;
+}
+
+#result, #result:hover {
+  background-color: white;
+  color: #e84040;
+  font-size: 1.5em;
+  font-weight: 900;
+  padding: 0;
+}
+
+.line h3:hover, .playAgain h3:hover {
+  background-color: #425cf4;
+  color: white;
+}
+
+.square {
+  background-color: red;
+  border-radius: 10%;
+  width: 30%;
+  height: auto;
+  margin: 1%;
+  display: inline-block;
+  padding-bottom: 30%;
+  transition: background-color 0.9s;
+  --webkit-transition: background 0.7s;
+  --moz-transition: background 0.7s;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    max-width: 70%;
+  }
+}
